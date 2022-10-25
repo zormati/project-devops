@@ -21,11 +21,15 @@ public class Book {
     private String plot;
 
     @Column(name = "shouldBeBackdOn")
-    private String  shouldBeBackdOn;
+    private String  shouldBeBackdOn = "-1";
 
     @ManyToOne
-    @Column(name = "author_id")
+    @JoinColumn(name = "author_id")
     private Author author;
+
+    @ManyToOne
+    @JoinColumn(name = "borrower_id", nullable = true)
+    private Student student;
 
     public Long getId() {
         return id;
@@ -51,6 +55,22 @@ public class Book {
         return shouldBeBackdOn;
     }
 
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     public Book(String title, String genre, String plot) {
         this.title = title;
         this.genre = genre;
@@ -65,5 +85,6 @@ public class Book {
     public Book() {
 
     }
+
 
 }
