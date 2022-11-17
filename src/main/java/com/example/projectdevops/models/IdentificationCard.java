@@ -20,4 +20,21 @@ public class IdentificationCard {
 
     public IdentificationCard() {
     }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public String getSchoolYear() {
+        return this.schoolYear;
+    }
+
+    public void setSchoolYear(String schoolYear) {
+        this.schoolYear = schoolYear;
+    }
+
 }

@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/book")
+@RequestMapping("/identification")
 @CrossOrigin(origins = "*")
-public class BookController {
+public class IdentificationCardController {
     @Autowired
     BookService bookService;
 

@@ -16,7 +16,7 @@ public class AuthorController {
     AuthorService authorService;
 
     @GetMapping("/all")
-    public List<Author> getStudents(){
+    public List<Author> getAuthors(){
         List<Author> authors = this.authorService.getAllAuthors();
         return authors;
     }
@@ -29,7 +29,7 @@ public class AuthorController {
     }
 
     @PostMapping("/create")
-    public Author createNewOwner(@RequestBody Author newAuthor)
+    public Author createNewAuthor(@RequestBody Author newAuthor)
     {
         Author author = this.authorService.createAuthor(newAuthor);
         return author;

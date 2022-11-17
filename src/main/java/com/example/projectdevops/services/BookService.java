@@ -24,7 +24,7 @@ public class BookService {
 
         Optional<Author> authorData = this.authorRepository.findById(authorId);
         if(authorData.isPresent()) {
-            Author author = authorData.orElseThrow(()-> new ResourceNotFoundException("Owner not found"));
+            Author author = authorData.orElseThrow(()-> new ResourceNotFoundException("Book not found"));
             book.setAuthor(author);
             Book createdBook = this.bookRepository.save(book);
             return createdBook;
@@ -40,11 +40,11 @@ public class BookService {
         return books;
     }
 
-    public Book getBookById(Long authorId) throws ResourceNotFoundException {
+    public Book getBookById(Long bookId) throws ResourceNotFoundException {
 
-        Optional<Book> authorData = this.bookRepository.findById(authorId);
-        if(authorData.isPresent()){
-            Book book = authorData.orElseThrow(()-> new ResourceNotFoundException("book not found"));
+        Optional<Book> bookData = this.bookRepository.findById(bookId);
+        if(bookData.isPresent()){
+            Book book = bookData.orElseThrow(()-> new ResourceNotFoundException("book not found"));
             return book;
         }else{
             throw new  ResourceNotFoundException("Not book matches.");
