@@ -12,6 +12,12 @@ def buildImage() {
     }
 }
 
+def sonarTest() {
+    echo "Running sonarQube checks..."
+    sh 'mvn clean verify sonar:sonar  -Dmaven.test.skip=true -Dsonar.projectKey=project-devops   -Dsonar.host.url=http://localhost:9000   -Dsonar.login=sqp_87fbbeac84a99062146b621a626bd8ae19a0430e'
+}
+
+
 def deployApp() {
     echo 'deploying the application...'
 }
