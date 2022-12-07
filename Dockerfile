@@ -7,7 +7,7 @@ COPY . /home/project
 WORKDIR /home/project
 # Compile and package the application to an executable JAR
 
-RUN mvn install -Dmaven.test.skip=true
+RUN mvn clean install -Dmaven.test.skip=true
 
 # For Java 11,
 
