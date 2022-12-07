@@ -33,7 +33,6 @@ pipeline {
                 script {
                     echo "building jar"
                     gv.buildJar()
-                    sh 'mvn clean package'
                 }
             }
         }
