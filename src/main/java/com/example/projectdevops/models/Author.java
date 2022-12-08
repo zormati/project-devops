@@ -65,6 +65,13 @@ public class Author {
         this.bio = bio;
     }
 
+    public Author(Long id,String firstName, String lastName, String bio) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.bio = bio;
+    }
+
     public Author() {
 
     }

@@ -34,6 +34,11 @@ public class BookService {
 
     }
 
+    public Book createBook(Book book) throws ResourceNotFoundException{
+        Book createdBook = this.bookRepository.save(book);
+        return createdBook;
+    }
+
     public List<Book> getAllBooks() throws ResourceNotFoundException {
 
         List<Book> books = this.bookRepository.findAll();
