@@ -44,6 +44,16 @@ pipeline {
                 }
             }
         }
+
+        stage('push to nexus') {
+            steps {
+                script {
+                    echo "pushing jar to nexus"
+                    gv.pushToNexus()
+                }
+            }
+        }
+
         stage('build image') {
             steps {
                 script {
