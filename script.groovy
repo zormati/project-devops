@@ -3,6 +3,11 @@ def buildJar() {
     sh 'mvn clean install -Dmaven.test.skip=true'
 }
 
+def runUnitTests() {
+    echo "running the unit tests..."
+    sh 'mvn test'
+}
+
 def buildImage() {
     echo "building the docker image..."
     withCredentials([usernamePassword(credentialsId: 'docker-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]) {

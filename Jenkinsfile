@@ -28,6 +28,14 @@ pipeline {
         //     }
         // }
         
+        stage('run unit tests') {
+            steps {
+                script {
+                    gv.runUnitTests()
+                }
+            }
+        }
+        
         stage('test with sonar') {
             steps {
                 script {
@@ -49,7 +57,7 @@ pipeline {
             steps {
                 script {
                     echo "pushing jar to nexus"
-                    gv.pushToNexus()
+                    // gv.pushToNexus()
                 }
             }
         }
