@@ -18,6 +18,10 @@ public class IdentificationCard {
         this.schoolYear = schoolYear;
     }
 
+    public IdentificationCard(Long id,String schoolYear) {
+        this.id = id;
+        this.schoolYear = schoolYear;
+    }
     public IdentificationCard() {
     }
 

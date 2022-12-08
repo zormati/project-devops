@@ -98,6 +98,14 @@ public class Student {
         this.cin = cin;
     }
 
+    public Student(Long id,String firstName, String lastName, String bornAt, String cin) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.bornAt = bornAt;
+        this.cin = cin;
+    }
+
     public Student() {
     }
 }

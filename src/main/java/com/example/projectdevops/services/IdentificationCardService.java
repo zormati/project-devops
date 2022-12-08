@@ -34,6 +34,12 @@ public class IdentificationCardService {
 
     }
 
+    public IdentificationCard createIdentificationCard(IdentificationCard card) throws ResourceNotFoundException {
+
+        IdentificationCard createdCard = this.idCardRepository.save(card);
+        return createdCard;
+    }
+
     public List<IdentificationCard> getAllIds() throws ResourceNotFoundException {
 
         List<IdentificationCard> idCards = this.idCardRepository.findAll();

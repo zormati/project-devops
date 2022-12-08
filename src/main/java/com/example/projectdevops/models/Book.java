@@ -82,6 +82,12 @@ public class Book {
         this.genre = genre;
     }
 
+    public Book(Long id, String title, String genre, String plot) {
+        this.id = id;
+        this.title = title;
+        this.genre = genre;
+        this.plot = plot;
+    }
     public Book() {
 
     }
