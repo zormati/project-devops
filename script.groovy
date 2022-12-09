@@ -18,9 +18,9 @@ def runUnitTests() {
 def buildImage() {
     echo "building the docker image..."
     withCredentials([usernamePassword(credentialsId: 'docker-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-        sh 'docker build -t zormati/devops:spring:lts .'
+        sh 'docker build -t zormati/devops:spring .'
         sh "echo $PASS | docker login -u $USER --password-stdin"
-        sh 'docker push zormati/devops:spring:lts'
+        sh 'docker push zormati/devops:spring'
     }
 }
 
