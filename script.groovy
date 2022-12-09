@@ -18,9 +18,9 @@ def runUnitTests() {
 def buildImage() {
     echo "building the docker image..."
     withCredentials([usernamePassword(credentialsId: 'docker-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-        sh 'docker build -t hanaghz/demo-app:${IMAGE_NAME} .'
+        sh 'docker build -t zormati/devops:spring:lts .'
         sh "echo $PASS | docker login -u $USER --password-stdin"
-        sh 'docker push hanaghz/demo-app:${IMAGE_NAME}'
+        sh 'docker push zormati/devops:spring:lts'
     }
 }
 
@@ -38,7 +38,9 @@ def deployApp() {
 def pushToNexus() {
     echo "pushing the jar file to Nexus maven-snapshots repo..."
     // sh 'mvn dependency:resolve'
-    sh 'mvn clean deploy -Dmaven.test.skip=true'
+    withCredentials([usernamePassword(credentialsId: 'nexus-cred', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+        sh 'mvn clean deploy -Dmaven.test.skip=true'
+    }
 }
 
 
