@@ -9,7 +9,7 @@ def runUnitTests() {
  
     docker.image('mysql:latest').withRun('-e "MYSQL_ROOT_PASSWORD=hanah" -e "MYSQL_DATABASE=school_library" -p 3310:3306 --name sql-sidecarr') { c ->
         /* Wait until mysql service is up */
-        sh 'while ! mysqladmin ping -h0.0.0.0 --silent; do sleep 1; done'
+        sh 'sleep 60'
         /* Run some tests which require MySQL */
         sh 'mvn test'
     }
