@@ -26,7 +26,8 @@ def buildImage() {
 
 def sonarTest() {
     echo "Running sonarQube checks..."
-    sh 'mvn clean verify sonar:sonar   -Dmaven.test.skip=true  -Dsonar.projectKey=project-devops   -Dsonar.host.url=http://172.23.0.3:9000   -Dsonar.login=sqp_114f7278795d345ede80d4d31a39c9bd382db6dd'
+    sh 'mvn dependency:resolve'
+    sh 'mvn clean verify sonar:sonar  -Dmaven.test.skip=true  -Dsonar.projectKey=project-devops   -Dsonar.host.url=http://172.23.0.3:9000   -Dsonar.login=sqp_114f7278795d345ede80d4d31a39c9bd382db6dd'
 }
 
 
@@ -36,7 +37,7 @@ def deployApp() {
 
 def pushToNexus() {
     echo "pushing the jar file to Nexus maven-snapshots repo..."
-    sh 'mvn dependency:resolve'
+    // sh 'mvn dependency:resolve'
     sh 'mvn clean deploy -Dmaven.test.skip=true'
 }
 
