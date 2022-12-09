@@ -5,7 +5,15 @@ def buildJar() {
 
 def runUnitTests() {
     echo "running the unit tests..."
-    sh 'mvn test'
+    //sh 'mvn test'
+ 
+    docker.image('mysql').withRun('-e "MYSQL_ROOT_PASSWORD=hanah"' + '-e "MYSQL_DATABASE=school_library"' +
+                                    ' -p 3308:3306' + ' -name sql-sidecar') { c ->
+        /* Wait until mysql service is up */
+        sh 'while ! mysqladmin ping -h0.0.0.0 --silent; do sleep 1; done'
+        /* Run some tests which require MySQL */
+        sh 'mvn test'
+    }
 }
 
 def buildImage() {
