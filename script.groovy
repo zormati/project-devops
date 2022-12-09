@@ -37,10 +37,11 @@ def deployApp() {
 
 def pushToNexus() {
     echo "pushing the jar file to Nexus maven-snapshots repo..."
+    nexusArtifactUploader artifacts: [[artifactId: 'project-devops', classifier: '', file: 'Uber.jar', type: 'jar']], credentialsId: 'nexus-cred', groupId: 'com.example', nexusUrl: '172.18.0.3:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'repo', version: '0.0.1-SNAPSHOT'
     // sh 'mvn dependency:resolve'
-    withCredentials([usernamePassword(credentialsId: 'nexus-cred', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-        sh 'mvn clean deploy -Dmaven.test.skip=true'
-    }
+    //withCredentials([usernamePassword(credentialsId: 'nexus-cred', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+    //    sh 'mvn clean deploy -Dmaven.test.skip=true'
+    //}
 }
 
 
