@@ -7,7 +7,7 @@ def runUnitTests() {
     echo "running the unit tests..."
     //sh 'mvn test'
  
-    docker.image('mysql:latest').withRun('-e "MYSQL_ROOT_PASSWORD=hanah" -e "MYSQL_DATABASE=school_library" -p 172.170.0.17:3310:3306 --name sql-sidecarr') { c ->
+    docker.image('mysql:latest').withRun('-e "MYSQL_ROOT_PASSWORD=hanah" -e "MYSQL_DATABASE=school_library" -p 172.17.0.17:3310:3306 --name sql-sidecarr') { c ->
         /* Wait until mysql service is up */
         sh 'sleep 60'
         /* Run some tests which require MySQL */
